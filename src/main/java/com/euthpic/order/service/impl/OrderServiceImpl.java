@@ -23,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
         this.orderDetailDao = orderDetailDao;
         this.orderMasterDao = orderMasterDao;
     }
+
     /**
      * 1. 查询商品信息(调用商品服务)
      * 2. 计算总价
@@ -32,10 +33,11 @@ public class OrderServiceImpl implements OrderService {
     //todo
     @Override
     public OrderDto create(OrderDto orderDto) {
-        orderDto.setOrderId(KeyUtil.getUniqueKey());
+        String orderId = KeyUtil.getUniqueKey();
+        orderDto.setOrderId(orderId);
 
         OrderMaster orderMaster = new OrderMaster();
-        BeanUtils.copyProperties(orderDto,orderMaster);
+        BeanUtils.copyProperties(orderDto, orderMaster);
         orderMaster.setOrderAmount(new BigDecimal("5"));
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
