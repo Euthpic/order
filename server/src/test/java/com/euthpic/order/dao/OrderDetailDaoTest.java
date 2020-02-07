@@ -2,13 +2,14 @@ package com.euthpic.order.dao;
 
 import java.math.BigDecimal;
 
+import com.euthpic.order.server.OrderApplication;
 import com.euthpic.order.server.dao.OrderDetailDao;
 import com.euthpic.order.server.model.OrderDetail;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = OrderApplication.class)
 class OrderDetailDaoTest {
     @Autowired
     private OrderDetailDao orderDetailDao;
